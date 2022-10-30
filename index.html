@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <title>Wifey Laptop Controller</title>
+</head>
+<body>
+    <style>
+        html, body {
+            min-width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        div {
+            width: 100%;
+            text-align: center;
+        }
+        button {
+            width: 49%;
+            font-size: 4em;
+            height: 3em;
+            margin-bottom: 1em;
+        }
+        #suspend {
+            width: 100%;
+        }
+    </style>
+    <div>
+        <button id="volup" onclick="volup()">VOL UP</button>
+        <button id="voldown" onclick="voldown()">VOL DOWN</button>  
+    </div>
+    <div>
+        <button id="brightup" onclick="brightup()">BRIGHT UP</button>
+        <button id="brightdown" onclick="brightdown()">BRIGHT DOWN</button>  
+    </div>
+    <button id="suspend" onclick="suspend()">SUSPEND</button>
+    <script>
+        function volup()
+        {
+            fetch('/volup');
+        }
+
+        function voldown()
+        {
+            fetch('/voldown')
+        }
+
+        function brightup()
+        {
+            fetch('/brightup');
+        }
+
+        function brightdown()
+        {
+            fetch('/brightdown');
+        }
+
+        function suspend()
+        {
+            let check = confirm('This will suspend the laptop, are you sure?');
+
+            if (check) {
+                fetch('/suspend');
+            }
+        }
+
+    </script>
+</body>
+</html>
